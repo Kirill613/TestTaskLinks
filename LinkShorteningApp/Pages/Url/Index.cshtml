@@ -1,0 +1,64 @@
+﻿@page "/"
+
+@model LinkShorteningApp.Pages.Url.IndexModel
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Сокращенный URL
+            </th>
+            <th >
+                Длинный URL
+            </th>
+            <th>
+                Количество переходов
+            </th>
+            <th>
+                Дата создания (GMT+0)
+            </th>
+            <th>
+                Редактировать
+            </th>
+            <th>
+                Удалить
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UrlInfos)
+        {
+            <tr>
+                <td>
+                    <span style="width:160px; word-wrap:break-word; display:inline-block;">
+                        @ViewData["BaseUrl"]@Html.DisplayFor(modelItem => item.ShortUrl)
+                    </span>
+                </td>
+                <td>
+                    <span style="width:250px; word-wrap:break-word; display:inline-block;">
+                        @Html.DisplayFor(modelItem => item.Url)
+                    </span>                 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClicksCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    <a asp-area="" asp-page="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary" role="button">
+                        Редактировать
+                    </a>                           
+                </td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id">
+                        <button type="submit" class="btn btn-outline-danger">
+                            Удалить
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

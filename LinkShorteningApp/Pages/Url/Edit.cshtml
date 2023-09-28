@@ -1,0 +1,42 @@
+﻿@page "/Edit"
+
+@model LinkShorteningApp.Pages.Url.EditModel
+
+<form method="post">
+    <div>
+        <input type="hidden" asp-for="UrlInfo.Id" class="form-control" />
+        <input type="hidden" asp-for="UrlInfo.Url" class="form-control" />
+        <input type="hidden" asp-for="UrlInfo.ShortUrl" class="form-control" />
+        <input type="hidden" asp-for="UrlInfo.CreatedAt" class="form-control" />
+    </div>
+    
+    <div>
+        <h4>Длинный URL</h4>
+        <span style="width:100%; word-wrap:break-word; display:inline-block;">
+            <p>@Model.UrlInfo.Url</p>
+        </span>
+    </div>
+
+    <div>
+        <h4>Сокращенный URL</h4>
+        <p>@Model.UrlInfo.ShortUrl</p>
+    </div>
+
+    <div>
+        <h4>Дата создания (GMT+0)</h4>
+        <p>@Model.UrlInfo.CreatedAt</p>
+    </div>
+
+    <div>
+        <h4>Количество переходов</h4>
+        <input asp-for="UrlInfo.ClicksCount" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-outline-primary">
+        Редактировать
+    </button>
+</form>
+
+

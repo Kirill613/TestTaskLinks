@@ -1,0 +1,18 @@
+﻿@page "/Create"
+
+@model LinkShorteningApp.Pages.Url.CreateModel
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="FullUrl">Введите Url, который необходимо сократить</label>
+        <br />
+        <span asp-validation-for="FullUrl" class="text-danger"></span>
+        <input asp-for="FullUrl" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-outline-primary">
+        Создать
+    </button>
+</form>
