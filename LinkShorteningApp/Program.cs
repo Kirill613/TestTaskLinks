@@ -20,6 +20,8 @@ builder.Services.AddScoped<IUrlRepository, UrlRepository>();
 
 var app = builder.Build();
 
+app.Services.MigrateDatabase(app.Configuration);
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
